@@ -15,7 +15,7 @@ class AddTitleInReports extends Migration
     {
         Schema::table('expense_reports', function (Blueprint $table) {
             $table->string('title',100);
-            $table->text('description');
+          
         });
     }
 

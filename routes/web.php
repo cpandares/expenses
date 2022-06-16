@@ -20,3 +20,7 @@ Route::resource('expense-reports', 'ExpenseReportController');
 Route::resource('expenses', 'ExpenseController');
 
 Route::post('sendEmail/{id}', 'ExpenseReportController@sendEmail');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
