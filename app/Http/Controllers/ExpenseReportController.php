@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Expense;
 use App\ExpenseReport;
 use App\Mail\SummaryReports;
 use Illuminate\Http\Request;
@@ -47,15 +48,14 @@ class ExpenseReportController extends Controller
         $report = new ExpenseReport();
 
         $validation = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required|max:255',
+            'title' => 'required|max:255',          
         ]);
 
        
 
 
         $report->title = $request->title;
-        $report->description = $request->description;
+        
         $report->save();
         return redirect('/expense-reports')->with([
             'message' =>'Report created successfully'
@@ -99,11 +99,11 @@ class ExpenseReportController extends Controller
         $report = ExpenseReport::findOrFail($id);
         $validation = $request->validate([
             'title' => 'required|max:255',
-            'description' => 'required|max:255',
+           
         ]);
 
         $report->title = $request->title;
-        $report->description = $request->description;
+     
 
         $report->update();
 
@@ -121,6 +121,7 @@ class ExpenseReportController extends Controller
      */
     public function destroy($id)
     {
+       
         $report = ExpenseReport::find($id);
         $report->delete();
         return redirect('/expense-reports')->with([
